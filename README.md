@@ -8,7 +8,7 @@ This is a demo of Viveport SDK. You can go through it to know how to use Vivepor
 * Add unity Asset Store  SteamVR Plugin 2.5.0    https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647
 * Add Unity Asset Store  VIVE Input Utility 1.10.6  https://assetstore.unity.com/packages/tools/integration/vive-input-utility-64219
 * Add Viveport SDK 1.7.16  https://developer.viveport.com/documents/sdk/en/download.html
-* Add this Sample Unity Package 
+* Add this Sample Unity Package (https://github.com/ViveportSoftware/viveport_sdk_unity_sample/tree/master/unitypackage)
 * Open Scene in Viveport_SDK_Sample/Scene/Sample
 * Click ViveportSDKManager and change ViveportSDK_Sample_TopApi Component Your VIVEPORT_ID and VIVEPORT_KEY. 
 ( How to get a VIVEPORT ID and VIVEPORT key  https://developer.viveport.com/documents/sdk/en/api_drm.html)
@@ -24,4 +24,4 @@ This is a demo of Viveport SDK. You can go through it to know how to use Vivepor
 
 * DRM API will be triggered automatically after you start to play sample scene.
 * You can click the buttons with corresponding API names to test Viveport SDK API as the following screenshots.
-![image](https://github.com/ViveportSoftware/viveport_sdk_unity_sample/blob/sdk_master/samplePic/all.jpg?raw=true)
+![image](https://github.com/ViveportSoftware/viveport_sdk_unity_sample/blob/master/samplePic/all.jpg?raw=true)
