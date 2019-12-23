@@ -85,6 +85,7 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
             else
             {
                 // Use Viveport Arcade API
+                // Viveport Arcade API : https://developer.viveport.com/documents/sdk/en/api_arcade.html
                 Debug.Log("VIVEPORT Arcade init pass");
                 onInitComplete.Invoke(2, "<color=#990000>ViveportSDK Arcade Init is Complete !!</color>");
             }
