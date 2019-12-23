@@ -56,7 +56,7 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
             Debug.Log("VIVEPORT init pass");
             if (onInitComplete != null)
             {
-                onInitComplete.Invoke(code, "<color=#009900>ViveportSDK Init is Complete !!</color>");
+                Api.QueryRuntimeMode(QueryRunTimeHandler);
             }
         }
         else
@@ -68,6 +68,29 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
             }
             Application.Quit();
             return;                                             // the response of Api.Init() is fail
+        }
+    }
+
+    private void QueryRunTimeHandler(int code, int nMode)
+    {
+        if (code == SUCCESS)
+        {
+            Viveport.Core.Logger.Log("QueryRunTimeHandler is successful" + code + "Running mode is " + nMode);
+            // nMode = 1 (Viveport Desktop mode), nMode = 2 (Viveport Arcade mode)
+            if (nMode == 1)
+            {
+                // Use Viveport API
+                onInitComplete.Invoke(code, " <color=#009900>ViveportSDK Init is Complete !!</color>");
+            }
+            else
+            {
+                // Use Viveport Arcade API
+                onInitComplete.Invoke(2, "<color=#990000>ViveportSDK Arcade Init is Complete !!</color>");
+            }
+        }
+        else
+        {
+            Debug.Log("QueryRunTimeHandler error: " + code);
         }
     }
 
