@@ -4,7 +4,7 @@ This is a demo of Viveport SDK. You can go through it to know how to use Vivepor
 
 ## Getting Started
 
-* Open an new Unity project after 2017.4.10f version
+* Open a new Unity project after 2017.4.10f version
 * Add unity Asset Store  SteamVR Plugin 2.5.0    https://assetstore.unity.com/packages/tools/integration/steamvr-plugin-32647
 * Add Unity Asset Store  VIVE Input Utility 1.10.6  https://assetstore.unity.com/packages/tools/integration/vive-input-utility-64219
 * Add Viveport SDK 1.7.16  https://developer.viveport.com/documents/sdk/en/download.html
