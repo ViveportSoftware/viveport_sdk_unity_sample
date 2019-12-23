@@ -53,7 +53,6 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
     {
         if (code == SUCCESS)
         {
-            Debug.Log("VIVEPORT init pass");
             if (onInitComplete != null)
             {
                 Api.QueryRuntimeMode(QueryRunTimeHandler);
@@ -80,11 +79,13 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
             if (nMode == 1)
             {
                 // Use Viveport API
+                Debug.Log("VIVEPORT init pass");
                 onInitComplete.Invoke(code, " <color=#009900>ViveportSDK Init is Complete !!</color>");
             }
             else
             {
                 // Use Viveport Arcade API
+                Debug.Log("VIVEPORT Arcade init pass");
                 onInitComplete.Invoke(2, "<color=#990000>ViveportSDK Arcade Init is Complete !!</color>");
             }
         }
