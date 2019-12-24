@@ -84,7 +84,8 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
             }
             else
             {
-                // Please use Viveport Arcade API , this sample code does not support  Viveport Arcade API
+                // Current runtime mode is Viveport Arcade. This sample code does not support Viveport Arcade API. 
+                // Please refer to the following link to know its usage.
                 // Viveport Arcade API : https://developer.viveport.com/documents/sdk/en/api_arcade.html
                 Debug.Log("VIVEPORT Arcade init pass");
                 onInitComplete.Invoke(2, "<color=#990000>ViveportSDK Arcade Init is Complete !!</color>");
