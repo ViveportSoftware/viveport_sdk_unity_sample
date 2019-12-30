@@ -53,10 +53,9 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
     {
         if (code == SUCCESS)
         {
-            Debug.Log("VIVEPORT init pass");
             if (onInitComplete != null)
             {
-                onInitComplete.Invoke(code, "<color=#009900>ViveportSDK Init is Complete !!</color>");
+                Api.QueryRuntimeMode(QueryRunTimeHandler);
             }
         }
         else
@@ -68,6 +67,38 @@ public class ViveportSDK_Sample_TopApi : MonoBehaviour {
             }
             Application.Quit();
             return;                                             // the response of Api.Init() is fail
+        }
+    }
+
+    private void QueryRunTimeHandler(int code, int nMode)
+    {
+        if (code == SUCCESS)
+        {
+            Viveport.Core.Logger.Log("QueryRunTimeHandler is successful" + code + "Running mode is " + nMode);
+            // nMode = 1 (Viveport Desktop mode), nMode = 2 (Viveport Arcade mode)
+            if (nMode == 1)
+            {
+                // Use Viveport API
+                Debug.Log("VIVEPORT init pass");
+                onInitComplete.Invoke(code, " <color=#009900>ViveportSDK Init is Complete !!</color>");
+            }
+            else
+            {
+                // Current runtime mode is Viveport Arcade. This sample code does not support Viveport Arcade API. 
+                // Please refer to the following link to know its usage.
+                // Viveport Arcade API : https://developer.viveport.com/documents/sdk/en/api_arcade.html
+                Debug.Log("VIVEPORT Arcade init pass");
+                onInitComplete.Invoke(2, "<color=#990000>ViveportSDK Arcade Init is Complete !!</color>");
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+            }
+        }
+        else
+        {
+            Debug.Log("QueryRunTimeHandler error: " + code);
         }
     }
 
