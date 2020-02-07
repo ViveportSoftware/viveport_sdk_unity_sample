@@ -57,7 +57,7 @@ public class ViveportSDK_Sample_DLC : MonoBehaviour {
         if (dlcList == null)
             return false;
         if (dlcList.ContainsKey(viveportId))
-            return true;
+            return dlcList[viveportId];
         else
             return false;
     }
