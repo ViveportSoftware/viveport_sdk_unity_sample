@@ -20,12 +20,11 @@ public class Sample_Controller : MonoBehaviour {
     private string _goToStoreViveportId = "bbbc73fc-b018-42ce-a049-439ab378dbc6";
     private string _launchData = "Start_Content";
     private string _launchBranchName = "PROD"; // PROD or BETA
-    private string _dlcAppId = "";
-    private int _dlcIndex = 0;
-    private bool _isDLCAvailable = false;
+    private List<string> _dlcViveportIdList = new List<string>() { "YOUR_DLC_VIVEPORTID 1", "YOU_DLC_VIVEPORTID2", "3..."}; 
 
     private ViveportSDK_Sample_IAP _curIAP;
     private ViveportSDK_Sample_UserStats _curUserStats;
+    private ViveportSDK_Sample_DLC _curDLC;
     private const int SUCCESS = 0;
 
     private void Awake()
@@ -118,8 +117,8 @@ public class Sample_Controller : MonoBehaviour {
             GetSubscriptionBtn.onClick.AddListener(GetSubscription);
         }
 
-        var curDLC = ViveportSDKManager.GetComponent<ViveportSDK_Sample_DLC>();
-        if (curDLC)
+        _curDLC = ViveportSDKManager.GetComponent<ViveportSDK_Sample_DLC>();
+        if (_curDLC)
         {
             //Add Button Click Event 
             CheckDLCBtn.onClick.AddListener(CheckDLC);
@@ -359,14 +358,20 @@ public class Sample_Controller : MonoBehaviour {
 
     public void CheckDLC()
     {
-        var dlcCount = Viveport.DLC.GetCount();
-        ConsoleText.text += string.Format("\n [DLC][GetIsAvailable] <color=#009900>Dlc Count: {0}.</color>", dlcCount);
-
-        var isInRange = Viveport.DLC.GetIsAvailable(_dlcIndex, out _dlcAppId, out _isDLCAvailable);
-        if (isInRange)
+        foreach (var curDLCId in _dlcViveportIdList)
         {
-            ConsoleText.text += string.Format("\n [DLC][GetIsAvailable] <color=#009900>Is DLC available: {0}, DLC Viveport ID: {1}.</color>", _isDLCAvailable, _dlcAppId);
+            var isOwn = _curDLC.CheckDLCVIVEPORTID(curDLCId);
+
+            if (isOwn)
+            {
+                ConsoleText.text += string.Format("\n [DLC][GetIsAvailable] <color=#009900>Is DLC available: {0}, DLC Viveport ID: {1}.</color>", isOwn, curDLCId);
+            }
+            else
+            {
+                ConsoleText.text += string.Format("\n [DLC][GetIsAvailable] <color=#990000>Is DLC available: {0}, DLC Viveport ID: {1}.</color>", isOwn, curDLCId);
+            }
         }
+        
     }
 
     public void DeeplinkComplete(int code, string message)
